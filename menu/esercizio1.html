@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alb's Ristorante</title>
+</head>
+<body>
+
+    <h1 style="text-align:center;">Benvenuti al Ristorante Alb's</h1>
+
+    <form action="ordine.php" method="GET">
+        <div>
+            <h2>Piatti Tipici Albanesi</h2>
+            <label for="piatti">Scegli il piatto:</label>
+            <select name="piatto" id="piatto">
+                <option value="null"></option>
+                <option value="fërgesë_12.50">Fërgesë - €12,50</option>
+                <option value="tavë kosi_15.00">Tavë Kosi - €15,00</option>
+                <option value="byrek_8.00">Byrek - €8,00</option>
+            </select>
+        </div>
+
+        <div>
+            <h2>Bevande</h2>
+            <label for="bevande">Scegli la bevanda:</label>
+            <select name="bevanda" id="bevanda">
+                <option value="null"></option>
+                <option value="raki_5.00">Raki - €5,00</option>
+                <option value="vino rosso_7.00">Vino Rosso - €7,00</option>
+                <option value="vino bianco_7.00">Vino Bianco - €7,00</option>
+            </select>
+        </div>
+
+        <div>
+            <h2>Dessert</h2>
+            <label for="dessert">Scegli il dessert:</label>
+            <select name="dessert1" id="dessert1">
+                <option value="null"></option>
+                <option value="bakllava_4.50">Bakllava - €4,50</option>
+                <option value="trilece_5.00">Trilece - €5,00</option>
+            </select>
+        </div>
+
+        <div style="text-align:center; margin-top: 20px;">
+            <button type="submit">Invia Ordine</button>
+        </div>
+    </form>
+
+    <div style="text-align:center; margin-top: 10px;">
+        <a href="index.html">
+            <button type="button">Torna all'indice</button>
+        </a>
+    </div>
+
+    <footer style="text-align:center; margin-top: 20px;">
+        © 2024 Alb's Ristorante. Tutti i diritti riservati.
+    </footer>
+
+</body>
+</html>
