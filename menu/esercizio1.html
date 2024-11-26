@@ -9,9 +9,11 @@
 
     <h1 style="text-align:center;">Benvenuti al Ristorante Alb's</h1>
 
+    <!-- Form per selezionare un ordine composto da piatti tipici, bevande e dessert -->
     <form action="ordine.php" method="GET">
         <div>
             <h2>Piatti Tipici Albanesi</h2>
+            <!-- Menu a tendina per la selezione del piatto -->
             <label for="piatti">Scegli il piatto:</label>
             <select name="piatto" id="piatto">
                 <option value="null"></option>
@@ -23,6 +25,7 @@
 
         <div>
             <h2>Bevande</h2>
+            <!-- Menu a tendina per la selezione della bevanda -->
             <label for="bevande">Scegli la bevanda:</label>
             <select name="bevanda" id="bevanda">
                 <option value="null"></option>
@@ -34,6 +37,7 @@
 
         <div>
             <h2>Dessert</h2>
+            <!-- Menu a tendina per la selezione del dessert -->
             <label for="dessert">Scegli il dessert:</label>
             <select name="dessert1" id="dessert1">
                 <option value="null"></option>
@@ -43,17 +47,21 @@
         </div>
 
         <div style="text-align:center; margin-top: 20px;">
+            <!-- Pulsante per inviare l'ordine -->
             <button type="submit">Invia Ordine</button>
         </div>
     </form>
 
     <div style="text-align:center; margin-top: 10px;">
         <a href="index.html">
+            <!-- Pulsante per tornare all'indice -->
             <button type="button">Torna all'indice</button>
         </a>
     </div>
 
     <footer style="text-align:center; margin-top: 20px;">
+        <!-- Footer che spiega il contenuto della pagina -->
+        Questa pagina consente agli utenti di selezionare piatti, bevande e dessert dal menù del Ristorante Alb's, e di inviare il loro ordine.
         © 2024 Alb's Ristorante. Tutti i diritti riservati.
     </footer>
 

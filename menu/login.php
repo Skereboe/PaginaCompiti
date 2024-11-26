@@ -1,26 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Accesso a pagina riservata</title>
-</head>
-<body>
-
-<h2>CONTROLLO CREDENZIALI</h2>
-
 <?php
-$nomeutente = $_REQUEST['nomeutente'];
-$password = $_REQUEST['password'];
+// login.php: Gestisce l'autenticazione dell'utente tramite nome utente e password
+<?php
+// login.php: Gestisce l'autenticazione dell'utente tramite nome utente e password
 
-echo "Nome utente: $nomeutente<br>";
-echo "Password: $password<br>";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera i dati inseriti nel form di login
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-if ($nomeutente == "Admin" && $password == "123") {
-  echo "Benvenuto $nomeutente nella pagina riservata del sito!";
+    // Esempio di autenticazione con credenziali predefinite
+    if ($username == "admin" && $password == "admin") {
+        // Autenticazione riuscita
+        echo "<h1>Login effettuato con successo!</h1>";
+    } else {
+        // Autenticazione fallita
+        echo "<h1>Nome utente o password errati!</h1>";
+    }
 } else {
-  echo "Attenzione: credenziali non corrette.";
+    // Mostra il modulo di login se il metodo non è POST
+    echo '
+    <!DOCTYPE html>
+    <html>
+    <body>
+        <form action="login.php" method="POST">
+            <label for="username">Nome utente:</label><br>
+            <input type="text" id="username" name="username"><br><br>
+            
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            
+            <input type="submit" value="Accedi">
+        </form>
+    </body>
+    </html>
+    ';
 }
 ?>
-<a href='esercizio2.html'><button>Torna indietro</button></a>
-
-</body>
-</html>
