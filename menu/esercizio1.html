@@ -10,7 +10,8 @@
 
     <!-- Form di registrazione -->
     <h2>Registrazione</h2>
-    <form action="signup.php" method="POST">
+    <form action="ordini.php" method="POST">
+        <input type="hidden" name="action" value="signup">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required><br>
         <label for="password">Password:</label>
@@ -20,7 +21,8 @@
 
     <!-- Form di login -->
     <h2>Login</h2>
-    <form action="login.php" method="POST">
+    <form action="ordini.php" method="POST">
+        <input type="hidden" name="action" value="login">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required><br>
         <label for="password">Password:</label>
@@ -30,7 +32,8 @@
 
     <!-- Form per selezionare un ordine -->
     <h2>Effettua un Ordine</h2>
-    <form action="ordine.php" method="POST">
+    <form action="ordini.php" method="POST">
+        <input type="hidden" name="action" value="order">
         <label for="piatto">Scegli il piatto:</label>
         <select name="piatto" id="piatto">
             <option value="">Seleziona</option>
