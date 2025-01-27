@@ -1,29 +1,64 @@
 <?php
-// ordine.php: Riceve i dati dell'ordine inviati tramite metodo GET e li visualizza
+// Connessione al database
+$host = 'localhost';
+$dbname = 'ristorante';
+$username = 'root';
+$password = '';
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    // Recupera i dati selezionati dall'utente nel modulo
-    $piatto = $_GET['piatto'];
-    $bevanda = $_GET['bevanda'];
-    $dessert = $_GET['dessert1'];
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Errore di connessione: " . $e->getMessage());
+}
 
-    echo '<!DOCTYPE html>
-    <html>
-    <body>';
+// Gestione delle richieste
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'];
 
-    // Controlla se sono stati selezionati tutti gli elementi
-    if ($piatto != "null" && $bevanda != "null" && $dessert != "null") {
-        // Mostra i dettagli dell'ordine
-        echo "<h1>Hai ordinato:</h1>";
-        echo "<p>Piatto: " . explode('_', $piatto)[0] . "</p>";
-        echo "<p>Bevanda: " . explode('_', $bevanda)[0] . "</p>";
-        echo "<p>Dessert: " . explode('_', $dessert)[0] . "</p>";
+    if ($action === 'signup') {
+        // Registrazione utente
+        $username = $_POST['username'];
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+        $stmt = $pdo->prepare("INSERT INTO utenti (username, password) VALUES (?, ?)");
+        try {
+            $stmt->execute([$username, $password]);
+            echo "Registrazione completata con successo!";
+        } catch (PDOException $e) {
+            echo "Errore: Username già esistente.";
+        }
+    } elseif ($action === 'login') {
+        // Login utente
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $stmt = $pdo->prepare("SELECT * FROM utenti WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            echo "Login riuscito! Benvenuto, $username.";
+        } else {
+            echo "Credenziali errate!";
+        }
+    } elseif ($action === 'order') {
+        // Creazione ordine
+        $piatto = $_POST['piatto'];
+        $bevanda = $_POST['bevanda'];
+        $dessert = $_POST['dessert'];
+
+        if ($piatto && $bevanda && $dessert) {
+            $stmt = $pdo->prepare("INSERT INTO ordini (piatto, bevanda, dessert) VALUES (?, ?, ?)");
+            $stmt->execute([$piatto, $bevanda, $dessert]);
+            echo "Ordine effettuato con successo!";
+        } else {
+            echo "Per favore seleziona tutti gli elementi.";
+        }
     } else {
-        // Avvisa l'utente di completare l'ordine
-        echo "<h1>Seleziona tutti gli elementi per completare l'ordine.</h1>";
+        echo "Azione non valida.";
     }
-
-    echo '</body>
-    </html>';
+} else {
+    echo "Metodo non supportato.";
 }
 ?>
