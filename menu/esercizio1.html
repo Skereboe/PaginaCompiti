@@ -6,64 +6,55 @@
     <title>Alb's Ristorante</title>
 </head>
 <body>
-
     <h1 style="text-align:center;">Benvenuti al Ristorante Alb's</h1>
 
-    <!-- Form per selezionare un ordine composto da piatti tipici, bevande e dessert -->
-    <form action="ordine.php" method="GET">
-        <div>
-            <h2>Piatti Tipici Albanesi</h2>
-            <!-- Menu a tendina per la selezione del piatto -->
-            <label for="piatti">Scegli il piatto:</label>
-            <select name="piatto" id="piatto">
-                <option value="null"></option>
-                <option value="fërgesë_12.50">Fërgesë - €12,50</option>
-                <option value="tavë kosi_15.00">Tavë Kosi - €15,00</option>
-                <option value="byrek_8.00">Byrek - €8,00</option>
-            </select>
-        </div>
-
-        <div>
-            <h2>Bevande</h2>
-            <!-- Menu a tendina per la selezione della bevanda -->
-            <label for="bevande">Scegli la bevanda:</label>
-            <select name="bevanda" id="bevanda">
-                <option value="null"></option>
-                <option value="raki_5.00">Raki - €5,00</option>
-                <option value="vino rosso_7.00">Vino Rosso - €7,00</option>
-                <option value="vino bianco_7.00">Vino Bianco - €7,00</option>
-            </select>
-        </div>
-
-        <div>
-            <h2>Dessert</h2>
-            <!-- Menu a tendina per la selezione del dessert -->
-            <label for="dessert">Scegli il dessert:</label>
-            <select name="dessert1" id="dessert1">
-                <option value="null"></option>
-                <option value="bakllava_4.50">Bakllava - €4,50</option>
-                <option value="trilece_5.00">Trilece - €5,00</option>
-            </select>
-        </div>
-
-        <div style="text-align:center; margin-top: 20px;">
-            <!-- Pulsante per inviare l'ordine -->
-            <button type="submit">Invia Ordine</button>
-        </div>
+    <!-- Form di registrazione -->
+    <h2>Registrazione</h2>
+    <form action="signup.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+        <button type="submit">Registrati</button>
     </form>
 
-    <div style="text-align:center; margin-top: 10px;">
-        <a href="index.html">
-            <!-- Pulsante per tornare all'indice -->
-            <button type="button">Torna all'indice</button>
-        </a>
-    </div>
+    <!-- Form di login -->
+    <h2>Login</h2>
+    <form action="login.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+        <button type="submit">Login</button>
+    </form>
 
-    <footer style="text-align:center; margin-top: 20px;">
-        <!-- Footer che spiega il contenuto della pagina -->
-        Questa pagina consente agli utenti di selezionare piatti, bevande e dessert dal menù del Ristorante Alb's, e di inviare il loro ordine.
-        © 2024 Alb's Ristorante. Tutti i diritti riservati.
-    </footer>
+    <!-- Form per selezionare un ordine -->
+    <h2>Effettua un Ordine</h2>
+    <form action="ordine.php" method="POST">
+        <label for="piatto">Scegli il piatto:</label>
+        <select name="piatto" id="piatto">
+            <option value="">Seleziona</option>
+            <option value="fërgesë">Fërgesë</option>
+            <option value="tavë kosi">Tavë Kosi</option>
+            <option value="byrek">Byrek</option>
+        </select><br>
 
+        <label for="bevanda">Scegli la bevanda:</label>
+        <select name="bevanda" id="bevanda">
+            <option value="">Seleziona</option>
+            <option value="raki">Raki</option>
+            <option value="vino rosso">Vino Rosso</option>
+            <option value="vino bianco">Vino Bianco</option>
+        </select><br>
+
+        <label for="dessert">Scegli il dessert:</label>
+        <select name="dessert" id="dessert">
+            <option value="">Seleziona</option>
+            <option value="bakllava">Bakllava</option>
+            <option value="trilece">Trilece</option>
+        </select><br>
+
+        <button type="submit">Invia Ordine</button>
+    </form>
 </body>
 </html>
